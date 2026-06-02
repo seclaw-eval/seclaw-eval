@@ -6,7 +6,6 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2606.02302">Paper</a> •
-  <a href="https://seclaw-eval.github.io/seclaw-eval/">Project Page</a> •
   <a href="https://github.com/seclaw-eval/seclaw-eval">Code</a> •
   <a href="#citation">Citation</a>
 </p>
