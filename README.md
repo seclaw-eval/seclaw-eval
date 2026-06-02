@@ -75,7 +75,6 @@ SeClaw is designed as an extensible benchmark. We plan to further explore the fo
 ## Resources
 
 * **Paper:** https://arxiv.org/abs/2606.02302
-* **Project Page:** https://seclaw-eval.github.io/seclaw-eval/
 * **Code:** Coming soon
 * **Dataset:** Coming soon
 * **Evaluation Environment:** Coming soon
