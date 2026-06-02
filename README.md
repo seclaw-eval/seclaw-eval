@@ -69,9 +69,6 @@ SeClaw is designed as an extensible benchmark. We plan to further explore the fo
 - **Support for More Agent Harnesses**  
   We will integrate SeClaw with additional agent execution frameworks, such as Claude Code and other coding or tool-using agents, to study risks across different infrastructures and interaction protocols.
 
-- **Implicit Safety-Risk Injection**  
-  We will investigate how unsafe objectives or constraints may be transformed, hidden, or amplified during intra-agent task propagation across planning, memory, tool-use, and execution modules.
-
 - **Benchmark Improvement**  
   We will continue improving SeClaw in terms of task diversity, evaluator calibration, and trajectory-level interpretability for more reliable safety evaluation in realistic stateful environments.
 
