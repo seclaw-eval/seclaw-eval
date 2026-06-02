@@ -60,6 +60,9 @@ Given the standardized safety-risk task dataset produced in Stage~I, SeClaw eval
 
 SeClaw is designed as an extensible benchmark. We plan to further explore the following directions:
 
+- **Open-Sourcing SeClaw-Bench**  
+  We will open-source the SeClaw-Bench dataset to support reproducible evaluation and further research on autonomous agent security.
+
 - **Evaluation on More Foundation Models**  
   We will release results on representative model families, including Qwen, Kimi, GPT, Gemini, and others, to compare safety robustness under the same safety-risk task distribution.
 
