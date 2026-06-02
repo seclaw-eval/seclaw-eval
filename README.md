@@ -1,8 +1,8 @@
-# SeClaw
+<h1 align="center">SeClaw</h1>
 
-<p align="center">
-  <b>SeClaw: Spec-Driven Security Task Synthesis for Evaluating Autonomous Agents</b>
-</p>
+<h3 align="center">
+  Spec-Driven Security Task Synthesis for Evaluating Autonomous Agents
+</h3>
 
 <p align="center">
   <a href="https://arxiv.org/abs/2606.02302">Paper</a> •
