@@ -12,19 +12,9 @@
 
 ---
 
-## Overview
+## Abstract
 
-**SeClaw** is a framework for evaluating the security risks of autonomous LLM agents operating in stateful environments.
-
-Modern LLM agents are increasingly equipped with tools, files, memory, and access to external services. These capabilities enable complex real-world workflows, but they also introduce new security risks that are difficult to measure with existing benchmarks. Current agent security evaluations often rely on manually designed tasks, cover only a limited set of emerging threats, and mainly focus on final outputs rather than the execution processes that lead to unsafe behavior.
-
-To address these limitations, SeClaw introduces a framework that combines:
-
-* **Specification-driven security task synthesis**, which enables scalable and controllable generation of security evaluation tasks from structured risk specifications;
-* **Execution-based security evaluation**, which evaluates agent behavior in a standardized environment;
-* **Trajectory-aware assessment**, which analyzes unsafe actions during the agent execution process rather than only checking final responses.
-
-By connecting systematic task synthesis with reproducible security evaluation, SeClaw provides a practical foundation for measuring, diagnosing, and comparing security failures in autonomous LLM agents.
+Autonomous LLM agents increasingly operate in stateful environments where they access tools, files, memory, and external services. While such capabilities enable complex real-world workflows, they also introduce security risks that are difficult to capture with existing evaluations. Current agent security benchmarks often rely on manually curated tasks, provide limited coverage of emerging threats, and focus primarily on final outcomes rather than the execution processes that lead to unsafe behavior. We introduce SeClaw, a framework that combines specification-driven security task synthesis with execution-based security evaluation for Autonomous agents. Spec-driven security task synthesis enables scalable and controllable construction of security tasks from structured risk specifications, while SeClaw docker provides a standardized testbed for evaluating agent behavior under diverse safety-risk scenarios. The benchmark covers risks arising from resources, user tasks, environments, and intrinsic agent behaviors, and supports trajectory-aware assessment of unsafe actions beyond final responses. By bridging systematic task synthesis and reproducible security evaluation, SeClaw provides a practical foundation for measuring, diagnosing, and comparing security failures in autonomous LLM agents.
 
 ---
 
@@ -54,28 +44,31 @@ If the figure is not ready yet, you can temporarily replace the image block abov
 
 ---
 
-## Key Features
 
-### Spec-Driven Security Task Synthesis
 
-SeClaw constructs security evaluation tasks from structured risk specifications. This makes the benchmark more scalable, controllable, and extensible compared with manually curated task sets.
+### Stage I: Security Task Synthesis.
 
-### Standardized Execution Environment
+The first stage constructs security evaluation tasks from explicit task specifications. We begin with a risk taxonomy that organizes security concerns into resource, task, environment, and intrinsic risks. Given a target risk category, human experts and Claude Code collaboratively write a structured specification that defines the task objective, threat scenario, required artifacts, operational constraints, and acceptance criteria. The specification is then abstracted into reusable constraints and converted into multi-agent task prototypes. These prototypes define the roles, interaction patterns, and tool assumptions required for the task, while remaining independent of a particular execution environment. Finally, specialized agents instantiate each prototype into executable task settings with workspaces, mock services, MCP tools, and local files. A human--multi-agent quality assurance loop reviews the generated task for correctness, security relevance, and reproducibility; failed tasks are iteratively refined, while validated tasks are added to the standardized safety-risk task library.
 
-SeClaw provides a Docker-based testbed for evaluating autonomous agents under diverse safety-risk scenarios. This allows agent behavior to be tested in a reproducible and controlled environment.
+### Stage II: Security Evaluation.
 
-### Broad Security Risk Coverage
+Given the standardized safety-risk task dataset produced in Stage~I, SeClaw evaluates foundation agents in a Docker-based sandbox environment. Each task specification is converted into an executable runtime configuration that defines the execution environment, available tools, and task constraints. The agent is then deployed inside an isolated container to perform the target task under controlled settings. During execution, SeClaw records the complete interaction trajectory, including prompts, tool invocations, file operations, intermediate observations, and final outputs. These execution trajectories are normalized into structured logs and analyzed under a multi-dimensional risk rubric covering information leakage, privilege misuse, content safety, and ethics or compliance risks. Unlike evaluations that focus only on the final response, SeClaw additionally examines the execution process itself, enabling fine-grained analysis of whether unsafe behaviors emerge during agent interaction with tools, files, and external services.
+---
+# Further Exploration
 
-The benchmark covers security risks arising from multiple sources, including:
+SeClaw is designed as an extensible benchmark. We plan to further explore the following directions:
 
-* Agent-accessible resources;
-* User tasks and instructions;
-* Stateful environments;
-* Intrinsic agent behaviors.
+- **Evaluation on More Foundation Models**  
+  We will release results on representative model families, including Qwen, Kimi, GPT, Gemini, and others, to compare safety robustness under the same safety-risk task distribution.
 
-### Trajectory-Aware Evaluation
+- **Support for More Agent Harnesses**  
+  We will integrate SeClaw with additional agent execution frameworks, such as Claude Code and other coding or tool-using agents, to study risks across different infrastructures and interaction protocols.
 
-Instead of only evaluating the final answer, SeClaw supports execution-level analysis of agent trajectories. This enables the benchmark to identify unsafe intermediate actions that may not be visible from final outputs alone.
+- **Implicit Safety-Risk Injection**  
+  We will investigate how unsafe objectives or constraints may be transformed, hidden, or amplified during intra-agent task propagation across planning, memory, tool-use, and execution modules.
+
+- **Benchmark Improvement**  
+  We will continue improving SeClaw in terms of task diversity, evaluator calibration, and trajectory-level interpretability for more reliable safety evaluation in realistic stateful environments.
 
 ---
 
@@ -87,18 +80,6 @@ Instead of only evaluating the final answer, SeClaw supports execution-level ana
 * **Dataset:** Coming soon
 * **Evaluation Environment:** Coming soon
 
----
-
-## Repository Structure
-
-```text
-seclaw-eval/
-├── README.md
-└── docs/
-    ├── index.html
-    └── assets/
-        └── framework.png
-```
 
 ---
 
