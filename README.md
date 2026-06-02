@@ -1,4 +1,4 @@
-# SeClaw
+<h1 align="center">SeClaw</h1>
 
 <h2 align="center">
   Spec-Driven Security Task Synthesis for Evaluating Autonomous Agents
