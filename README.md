@@ -53,8 +53,10 @@ The first stage constructs security evaluation tasks from explicit task specific
 ### Stage II: Security Evaluation.
 
 Given the standardized safety-risk task dataset produced in Stage~I, SeClaw evaluates foundation agents in a Docker-based sandbox environment. Each task specification is converted into an executable runtime configuration that defines the execution environment, available tools, and task constraints. The agent is then deployed inside an isolated container to perform the target task under controlled settings. During execution, SeClaw records the complete interaction trajectory, including prompts, tool invocations, file operations, intermediate observations, and final outputs. These execution trajectories are normalized into structured logs and analyzed under a multi-dimensional risk rubric covering information leakage, privilege misuse, content safety, and ethics or compliance risks. Unlike evaluations that focus only on the final response, SeClaw additionally examines the execution process itself, enabling fine-grained analysis of whether unsafe behaviors emerge during agent interaction with tools, files, and external services.
+
+
 ---
-# Further Exploration
+## Further Exploration
 
 SeClaw is designed as an extensible benchmark. We plan to further explore the following directions:
 
