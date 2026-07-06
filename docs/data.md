@@ -7,20 +7,18 @@ This page describes the public SPECSYNTH-CLAWBENCH task dataset included in this
 | Item | Value |
 |------|-------|
 | Dataset target | `openclaw` |
-| Release list | `batch_inputs/version/v1/test_tasks.jsonl` |
+| Release list | `batch_inputs/task_list.jsonl` |
 | Number of tasks | 150 |
 | Task directories | `tasks/openclaw/` |
 | Primary runner | `scripts/batch_execute.sh --backend docker` |
 
-The v1 release uses a JSONL task list so experiments can refer to a stable task set while the repository keeps full task fixtures under `tasks/openclaw/`.
+The release uses a JSONL task list so experiments can refer to a stable task set while the repository keeps full task fixtures under `tasks/openclaw/`.
 
 ## Directory Layout
 
 ```text
 batch_inputs/
-└── version/
-    └── v1/
-        └── test_tasks.jsonl
+└── task_list.jsonl
 
 tasks/
 └── openclaw/
@@ -40,7 +38,7 @@ Not every task needs every optional fixture subdirectory, but the runtime unders
 
 ## Task List Format
 
-Each line in `batch_inputs/version/v1/test_tasks.jsonl` is a JSON object:
+Each line in `batch_inputs/task_list.jsonl` is a JSON object:
 
 ```json
 {"task_name": "example task name", "task_id": "task_safety_example_00000000", "target": "openclaw"}
@@ -78,9 +76,9 @@ Run the full public task list:
 ```bash
 ./scripts/batch_execute.sh \
   --backend docker \
-  --tasks-jsonl batch_inputs/version/v1/test_tasks.jsonl \
+  --tasks-jsonl batch_inputs/task_list.jsonl \
   --models-config docker_models_config.yaml \
-  --batch-name docker_eval_v1
+  --batch-name docker_eval
 ```
 
 Run from a task directory instead of the JSONL release list:

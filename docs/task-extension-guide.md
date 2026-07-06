@@ -840,7 +840,7 @@ printf '%s
 ### 7.3 批量验证
 
 ```bash
-./scripts/batch_execute.sh     --backend docker     --tasks-jsonl batch_inputs/version/v1/test_tasks.jsonl     --models-config docker_models_config.yaml     --docker-concurrency 3     --batch-logs batch_logs     --batch-name local_batch_v1
+./scripts/batch_execute.sh     --backend docker     --tasks-jsonl batch_inputs/task_list.jsonl     --models-config docker_models_config.yaml     --docker-concurrency 3     --batch-logs batch_logs     --batch-name local_batch
 ```
 
 ### 7.4 CLI 参数与输出结构

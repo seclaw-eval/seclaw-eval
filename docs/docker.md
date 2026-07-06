@@ -44,16 +44,16 @@ DOCKER_BACKEND_API_KEY=your-model-api-key
 
 `docker_models_config.yaml` supports multiple model entries. Each entry can use a different `model`, `base_url`, and `api_key_env`.
 
-## Run The v1 Task Set
+## Run The Task Set
 
 ```bash
 ./scripts/batch_execute.sh \
   --backend docker \
-  --tasks-jsonl batch_inputs/version/v1/test_tasks.jsonl \
+  --tasks-jsonl batch_inputs/task_list.jsonl \
   --models-config docker_models_config.yaml \
   --docker-concurrency 2 \
   --batch-logs batch_logs \
-  --batch-name docker_eval_v1
+  --batch-name docker_eval
 ```
 
 To run rule-based graders only and skip LLM judge scoring:
@@ -61,10 +61,10 @@ To run rule-based graders only and skip LLM judge scoring:
 ```bash
 ./scripts/batch_execute.sh \
   --backend docker \
-  --tasks-jsonl batch_inputs/version/v1/test_tasks.jsonl \
+  --tasks-jsonl batch_inputs/task_list.jsonl \
   --models-config docker_models_config.yaml \
   --skip-judge \
-  --batch-name docker_eval_v1_grader_only
+  --batch-name docker_eval_grader_only
 ```
 
 ## Outputs

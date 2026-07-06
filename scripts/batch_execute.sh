@@ -47,7 +47,7 @@ General:
 Example:
   ./scripts/batch_execute.sh \
       --backend docker \
-      --tasks-jsonl batch_inputs/version/v1/test_tasks.jsonl \
+      --tasks-jsonl batch_inputs/task_list.jsonl \
       --models-config docker_models_config.yaml \
       --docker-concurrency 2 \
       --batch-logs batch_logs \

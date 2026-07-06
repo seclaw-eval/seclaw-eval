@@ -53,9 +53,9 @@ This repository now includes the public SeClaw benchmark release for Docker-base
 | Component | Path | Description |
 |-----------|------|-------------|
 | Docker evaluation guide | [docs/docker.md](docs/docker.md) | Setup, model configuration, batch commands, outputs, and troubleshooting. |
-| Dataset guide | [docs/data.md](docs/data.md) | v1 task list format, task directory contract, and dataset usage. |
+| Dataset guide | [docs/data.md](docs/data.md) | Task list format, task directory contract, and dataset usage. |
 | Task dataset | [tasks/openclaw/](tasks/openclaw/) | 150 executable OpenClaw safety-risk tasks. |
-| v1 task list | [batch_inputs/version/v1/test_tasks.jsonl](batch_inputs/version/v1/test_tasks.jsonl) | Stable JSONL list for the public release split. |
+| Task list | [batch_inputs/task_list.jsonl](batch_inputs/task_list.jsonl) | Stable JSONL list for the public release split. |
 | Docker runner | [scripts/batch_execute.sh](scripts/batch_execute.sh) | Public entry point for reproducible Docker evaluation. |
 | Runtime integration | [benchmark/](benchmark/) | Docker task loading, fixture deployment, execution, and grading helpers. |
 
@@ -74,11 +74,11 @@ Edit `.env` and `docker_models_config.yaml` for your OpenAI-compatible model pro
 ```bash
 ./scripts/batch_execute.sh \
   --backend docker \
-  --tasks-jsonl batch_inputs/version/v1/test_tasks.jsonl \
+  --tasks-jsonl batch_inputs/task_list.jsonl \
   --models-config docker_models_config.yaml \
   --docker-concurrency 2 \
   --batch-logs batch_logs \
-  --batch-name docker_eval_v1
+  --batch-name docker_eval
 ```
 
 Results are written to `batch_logs/{batch_name}` with aggregate scores, a report, normalized traces, transcripts, grader outputs, and execution metadata.
@@ -88,7 +88,7 @@ Results are written to `batch_logs/{batch_name}` with aggregate scores, a report
 ```text
 .
 ├── benchmark/                     # Docker runtime integration
-├── batch_inputs/version/v1/        # Public v1 task list
+├── batch_inputs/                  # Public task list
 ├── docs/                           # Docker, dataset, task, and grading docs
 ├── scripts/                        # Batch execution, evaluation, and analysis CLIs
 ├── tasks/openclaw/                 # 150 OpenClaw task directories
@@ -131,7 +131,7 @@ SeClaw is designed as an extensible benchmark. We plan to further explore the fo
 
 * **Paper:** https://arxiv.org/abs/2606.02302
 * **Code:** [Docker batch runner](scripts/batch_execute.sh), [runtime integration](benchmark/), and [evaluation scripts](scripts/)
-* **Dataset:** [150 OpenClaw tasks](tasks/openclaw/) with the public [v1 task list](batch_inputs/version/v1/test_tasks.jsonl)
+* **Dataset:** [150 OpenClaw tasks](tasks/openclaw/) with the public [task list](batch_inputs/task_list.jsonl)
 * **Evaluation Environment:** [Docker Evaluation Guide](docs/docker.md)
 * **Dataset Documentation:** [Dataset Guide](docs/data.md)
 
