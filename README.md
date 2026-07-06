@@ -7,6 +7,8 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2606.02302">Paper</a> •
   <a href="https://github.com/seclaw-eval/seclaw-eval">Code</a> •
+  <a href="docs/data.md">Dataset</a> •
+  <a href="docs/docker.md">Docker Evaluation</a> •
   <a href="#citation">Citation</a>
 </p>
 
@@ -44,6 +46,59 @@ If the figure is not ready yet, you can temporarily replace the image block abov
 
 ---
 
+## Public Release
+
+This repository now includes the public SeClaw benchmark release for Docker-based security evaluation:
+
+| Component | Path | Description |
+|-----------|------|-------------|
+| Docker evaluation guide | [docs/docker.md](docs/docker.md) | Setup, model configuration, batch commands, outputs, and troubleshooting. |
+| Dataset guide | [docs/data.md](docs/data.md) | v1 task list format, task directory contract, and dataset usage. |
+| Task dataset | [tasks/openclaw/](tasks/openclaw/) | 150 executable OpenClaw safety-risk tasks. |
+| v1 task list | [batch_inputs/version/v1/test_tasks.jsonl](batch_inputs/version/v1/test_tasks.jsonl) | Stable JSONL list for the public release split. |
+| Docker runner | [scripts/batch_execute.sh](scripts/batch_execute.sh) | Public entry point for reproducible Docker evaluation. |
+| Runtime integration | [benchmark/](benchmark/) | Docker task loading, fixture deployment, execution, and grading helpers. |
+
+### Quick Start
+
+```bash
+uv sync
+docker pull ghcr.io/openclaw/openclaw:main
+
+cp .env.example .env
+cp docker_models_config.example.yaml docker_models_config.yaml
+```
+
+Edit `.env` and `docker_models_config.yaml` for your OpenAI-compatible model provider, then run:
+
+```bash
+./scripts/batch_execute.sh \
+  --backend docker \
+  --tasks-jsonl batch_inputs/version/v1/test_tasks.jsonl \
+  --models-config docker_models_config.yaml \
+  --docker-concurrency 2 \
+  --batch-logs batch_logs \
+  --batch-name docker_eval_v1
+```
+
+Results are written to `batch_logs/{batch_name}` with aggregate scores, a report, normalized traces, transcripts, grader outputs, and execution metadata.
+
+### Repository Structure
+
+```text
+.
+├── benchmark/                     # Docker runtime integration
+├── batch_inputs/version/v1/        # Public v1 task list
+├── docs/                           # Docker, dataset, task, and grading docs
+├── scripts/                        # Batch execution, evaluation, and analysis CLIs
+├── tasks/openclaw/                 # 150 OpenClaw task directories
+├── tests/                          # Unit tests for loaders, Docker backend, and grading
+├── docker_models_config.example.yaml
+└── judge_models_config.example.yaml
+```
+
+---
+
 
 
 ### Stage I: Security Task Synthesis.
@@ -77,9 +132,10 @@ SeClaw is designed as an extensible benchmark. We plan to further explore the fo
 ## Resources
 
 * **Paper:** https://arxiv.org/abs/2606.02302
-* **Code:** Coming soon
-* **Dataset:** Coming soon
-* **Evaluation Environment:** Coming soon
+* **Code:** [Docker batch runner](scripts/batch_execute.sh), [runtime integration](benchmark/), and [evaluation scripts](scripts/)
+* **Dataset:** [150 OpenClaw tasks](tasks/openclaw/) with the public [v1 task list](batch_inputs/version/v1/test_tasks.jsonl)
+* **Evaluation Environment:** [Docker Evaluation Guide](docs/docker.md)
+* **Dataset Documentation:** [Dataset Guide](docs/data.md)
 
 
 ---
@@ -104,4 +160,4 @@ If you find this project useful, please cite our paper:
 
 ## License
 
-The license will be announced soon.
+Apache License 2.0. See [LICENSE](LICENSE).
