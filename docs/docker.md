@@ -1,10 +1,10 @@
 # Docker Evaluation Guide
 
-This page describes how to run the public SPECSYNTH-CLAWBENCH release with Docker.
+This page describes how to run SeClaw-Bench with the public SPECSYNTH-CLAWBENCH Docker evaluation backend.
 
 ## What Docker Runs
 
-The public Docker backend evaluates each task in a fresh OpenClaw container. For every configured model and task, it:
+The public Docker backend evaluates each SeClaw-Bench task in a fresh OpenClaw container. For every configured model and task, it:
 
 1. Starts `ghcr.io/openclaw/openclaw:main` or a custom image.
 2. Deploys the task fixture into the container.
@@ -44,7 +44,7 @@ DOCKER_BACKEND_API_KEY=your-model-api-key
 
 `docker_models_config.yaml` supports multiple model entries. Each entry can use a different `model`, `base_url`, and `api_key_env`.
 
-## Run The Task Set
+## Run SeClaw-Bench
 
 ```bash
 ./scripts/batch_execute.sh \

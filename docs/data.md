@@ -1,18 +1,19 @@
-# Dataset Guide
+# SeClaw-Bench Dataset Guide
 
-This page describes the public SPECSYNTH-CLAWBENCH task dataset included in this repository.
+This page describes SeClaw-Bench, the public task dataset included in this repository.
 
 ## Release Summary
 
 | Item | Value |
 |------|-------|
+| Dataset name | SeClaw-Bench |
 | Dataset target | `openclaw` |
 | Release list | `batch_inputs/task_list.jsonl` |
 | Number of tasks | 150 |
 | Task directories | `tasks/openclaw/` |
 | Primary runner | `scripts/batch_execute.sh --backend docker` |
 
-The release uses a JSONL task list so experiments can refer to a stable task set while the repository keeps full task fixtures under `tasks/openclaw/`.
+SeClaw-Bench uses a JSONL task list so experiments can refer to a stable task set while the repository keeps full task fixtures under `tasks/openclaw/`.
 
 ## Directory Layout
 
@@ -69,7 +70,7 @@ tasks/{target}/{task_id}
 | `fixture/local_files/` | Additional local assets copied into the container. |
 | `fixture/init.sh` | Optional initialization script executed before the agent run. |
 
-## Using The Dataset
+## Using SeClaw-Bench
 
 Run the full public task list:
 
