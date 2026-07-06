@@ -116,6 +116,9 @@ Given the standardized safety-risk task dataset produced in Stage~I, SeClaw eval
 SeClaw is designed as an extensible benchmark. We plan to further explore the following directions:
 
 
+- **Evaluation on More Foundation Models**  
+  We will release results on representative model families, including Qwen, Kimi, GPT, Gemini, and others, to compare safety robustness under the same safety-risk task distribution.
+
 - **Support for More Agent Harnesses**  
   We will integrate SeClaw with additional agent execution frameworks, such as Claude Code and other coding or tool-using agents, to study risks across different infrastructures and interaction protocols.
 
