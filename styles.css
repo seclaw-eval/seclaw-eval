@@ -167,10 +167,27 @@ h1 {
 }
 
 .author-line {
-  max-width: 840px;
-  margin: 0 auto 28px;
+  max-width: 900px;
+  margin: 0 auto 8px;
   color: var(--muted);
   font-size: 14px;
+}
+
+.author-line sup,
+.author-notes sup {
+  color: var(--coral);
+  font-weight: 800;
+}
+
+.author-notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  margin: 0 auto 28px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .action-row {
