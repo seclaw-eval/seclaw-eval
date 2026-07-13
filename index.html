@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="SeClaw: Spec-Driven Security Task Synthesis for Evaluating Autonomous Agents."
+    />
+    <meta property="og:title" content="SeClaw" />
+    <meta
+      property="og:description"
+      content="A benchmark framework for measuring, diagnosing, and comparing security failures in autonomous LLM agents."
+    />
+    <meta property="og:type" content="website" />
+    <title>SeClaw | Spec-Driven Security Task Synthesis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="SeClaw home">
+        <span class="brand-mark">SC</span>
+        <span>SeClaw</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#framework">Framework</a>
+        <a href="#release">Release</a>
+        <a href="#quickstart">Quick Start</a>
+        <a href="#citation">Citation</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Autonomous Agent Security Evaluation</p>
+            <h1>SeClaw</h1>
+            <h2>Spec-Driven Security Task Synthesis for Evaluating Autonomous Agents</h2>
+            <p class="author-line">
+              Hao Cheng, Changtao Miao, Tianle Song, Yin Wu, He Liu, Erjia Xiao, Junchi Chen,
+              Xiaoyu Shi, Yichi Wang, Jing Yang, Taowen Wang, Jinhao Duan, Mengshu Sun,
+              Peiyan Dong, Xuan Shen, Yang Cao, Renjing Xu, Kaidi Xu, Jindong Gu, Bo Zhang,
+              Jize Zhang, Chenhao Lin, Philip Torr, Chao Shen
+            </p>
+            <div class="action-row" aria-label="Project links">
+              <a class="button primary" href="https://arxiv.org/abs/2606.02302">
+                <span class="button-icon">P</span>
+                Paper
+              </a>
+              <a class="button" href="https://github.com/seclaw-eval/seclaw-eval">
+                <span class="button-icon">G</span>
+                Code
+              </a>
+              <a class="button" href="https://github.com/seclaw-eval/seclaw-eval/tree/main/tasks/openclaw">
+                <span class="button-icon">D</span>
+                Dataset
+              </a>
+              <a class="button" href="https://github.com/seclaw-eval/seclaw-eval/blob/main/docs/docker.md">
+                <span class="button-icon">R</span>
+                Docker Evaluation
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Benchmark summary">
+            <div class="panel-ribbon">Public release</div>
+            <div class="metric-grid">
+              <div>
+                <strong>150</strong>
+                <span>OpenClaw tasks</span>
+              </div>
+              <div>
+                <strong>4</strong>
+                <span>Risk surfaces</span>
+              </div>
+              <div>
+                <strong>2</strong>
+                <span>Pipeline stages</span>
+              </div>
+              <div>
+                <strong>Trace</strong>
+                <span>Level grading</span>
+              </div>
+            </div>
+            <a class="hero-image-link" href="#framework" aria-label="Jump to the SeClaw framework figure">
+              <img
+                src="assets/framework.png"
+                alt="Overview of the SeClaw framework for task synthesis and security evaluation"
+              />
+              <span>Framework overview from the SeClaw repository</span>
+            </a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section anchor-section" id="abstract">
+        <div class="section-heading">
+          <p class="eyebrow">Abstract</p>
+          <h2>Security evaluation for stateful, tool-using agents.</h2>
+        </div>
+        <div class="prose wide">
+          <p>
+            Autonomous LLM agents increasingly operate in stateful environments where they access
+            tools, files, memory, and external services. These capabilities unlock useful workflows,
+            but also introduce security risks that are difficult to capture with final-answer-only
+            evaluations.
+          </p>
+          <p>
+            SeClaw combines specification-driven security task synthesis with execution-based
+            security evaluation. It constructs controllable tasks from structured risk
+            specifications, then evaluates agents inside a standardized Docker testbed while
+            recording and grading the complete interaction trajectory.
+          </p>
+        </div>
+      </section>
+
+      <section class="section anchor-section" id="framework">
+        <div class="section-heading">
+          <p class="eyebrow">Framework</p>
+          <h2>From risk specifications to reproducible execution traces.</h2>
+        </div>
+
+        <figure class="framework-figure">
+          <img
+            src="assets/framework.png"
+            alt="SeClaw framework diagram showing security task synthesis, benchmark construction, and execution-based evaluation"
+          />
+          <figcaption>
+            SeClaw framework image from <code>docs/assets/framework.png</code> in the project repository.
+          </figcaption>
+        </figure>
+
+        <div class="framework-visual" role="img" aria-label="SeClaw framework flow">
+          <div class="flow-column">
+            <span class="flow-tag">Stage I</span>
+            <h3>Security Task Synthesis</h3>
+            <p>Risk taxonomy, structured specifications, task prototypes, and executable settings.</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-column emphasis">
+            <span class="flow-tag">SeClaw-Bench</span>
+            <h3>Standardized Task Library</h3>
+            <p>Validated OpenClaw tasks with workspaces, mock services, MCP tools, and graders.</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-column">
+            <span class="flow-tag">Stage II</span>
+            <h3>Security Evaluation</h3>
+            <p>Docker execution, trajectory capture, normalized logs, and multi-dimensional risk rubrics.</p>
+          </div>
+        </div>
+
+        <div class="stage-grid">
+          <article class="stage-card">
+            <span class="stage-number">01</span>
+            <h3>Spec-Driven Security Task Synthesis</h3>
+            <p>
+              Human experts and Claude Code translate explicit risk categories into reusable
+              constraints, prototypes, task workspaces, mock services, and acceptance criteria.
+            </p>
+          </article>
+          <article class="stage-card">
+            <span class="stage-number">02</span>
+            <h3>Execution-Based Security Evaluation</h3>
+            <p>
+              Agents run in isolated containers. SeClaw captures prompts, tool calls, file operations,
+              final outputs, grader outputs, and audit data for trajectory-aware analysis.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section anchor-section" id="release">
+        <div class="section-heading">
+          <p class="eyebrow">Public Release</p>
+          <h2>SeClaw-Bench ships with executable tasks and evaluation tooling.</h2>
+        </div>
+
+        <div class="release-grid">
+          <a class="resource-card" href="https://github.com/seclaw-eval/seclaw-eval/blob/main/docs/docker.md">
+            <span>Guide</span>
+            <h3>Docker Evaluation</h3>
+            <p>Setup, model configuration, batch commands, outputs, and troubleshooting.</p>
+          </a>
+          <a class="resource-card" href="https://github.com/seclaw-eval/seclaw-eval/blob/main/docs/data.md">
+            <span>Data</span>
+            <h3>SeClaw-Bench Guide</h3>
+            <p>Task list format, task directory contract, and dataset usage.</p>
+          </a>
+          <a class="resource-card" href="https://github.com/seclaw-eval/seclaw-eval/tree/main/tasks/openclaw">
+            <span>Tasks</span>
+            <h3>150 OpenClaw Tasks</h3>
+            <p>Executable safety-risk tasks with fixtures, local files, mock services, and graders.</p>
+          </a>
+          <a class="resource-card" href="https://github.com/seclaw-eval/seclaw-eval/blob/main/scripts/batch_execute.sh">
+            <span>Runner</span>
+            <h3>Batch Execution</h3>
+            <p>Public entry point for reproducible Docker evaluation and model comparison.</p>
+          </a>
+        </div>
+
+        <div class="table-wrap" aria-label="Repository structure">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Path</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Docker runtime</td>
+                <td><code>benchmark/</code></td>
+                <td>Task loading, fixture deployment, execution, and grading helpers.</td>
+              </tr>
+              <tr>
+                <td>Task list</td>
+                <td><code>batch_inputs/task_list.jsonl</code></td>
+                <td>Stable JSONL split for the public benchmark release.</td>
+              </tr>
+              <tr>
+                <td>Evaluation scripts</td>
+                <td><code>scripts/</code></td>
+                <td>Batch execution, trajectory evaluation, and analysis CLIs.</td>
+              </tr>
+              <tr>
+                <td>Documentation</td>
+                <td><code>docs/</code></td>
+                <td>Docker, dataset, task extension, and grading design references.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section anchor-section split-section" id="quickstart">
+        <div>
+          <div class="section-heading compact">
+            <p class="eyebrow">Quick Start</p>
+            <h2>Run the public release in a Docker-backed sandbox.</h2>
+          </div>
+          <p class="prose">
+            Configure an OpenAI-compatible model provider, run the public task list, and inspect
+            aggregate scores, reports, normalized traces, transcripts, grader outputs, and execution
+            metadata under <code>batch_logs/{batch_name}</code>.
+          </p>
+        </div>
+        <div class="code-card">
+          <button class="copy-button" type="button" data-copy-target="quickstart-code">Copy</button>
+          <pre id="quickstart-code"><code>uv sync
+docker pull ghcr.io/openclaw/openclaw:main
+
+cp .env.example .env
+cp docker_models_config.example.yaml docker_models_config.yaml
+
+./scripts/batch_execute.sh \
+  --backend docker \
+  --tasks-jsonl batch_inputs/task_list.jsonl \
+  --models-config docker_models_config.yaml \
+  --docker-concurrency 2 \
+  --batch-logs batch_logs \
+  --batch-name docker_eval</code></pre>
+        </div>
+      </section>
+
+      <section class="section anchor-section">
+        <div class="section-heading">
+          <p class="eyebrow">Further Exploration</p>
+          <h2>Built to expand with agent ecosystems and richer diagnostics.</h2>
+        </div>
+        <div class="direction-grid">
+          <article>
+            <h3>More Foundation Models</h3>
+            <p>Compare representative model families under the same safety-risk task distribution.</p>
+          </article>
+          <article>
+            <h3>More Agent Harnesses</h3>
+            <p>Integrate additional coding and tool-using agent frameworks for broader coverage.</p>
+          </article>
+          <article>
+            <h3>Benchmark Improvement</h3>
+            <p>Improve task diversity, evaluator calibration, and trajectory-level interpretability.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section anchor-section" id="citation">
+        <div class="section-heading">
+          <p class="eyebrow">Citation</p>
+          <h2>Cite SeClaw if the benchmark supports your research.</h2>
+        </div>
+        <div class="code-card citation-card">
+          <button class="copy-button" type="button" data-copy-target="citation-code">Copy</button>
+          <pre id="citation-code"><code>@misc{cheng2026seclawspecdrivensecuritytask,
+  title={SeClaw: Spec-Driven Security Task Synthesis for Evaluating Autonomous Agents},
+  author={Hao Cheng and Changtao Miao and Tianle Song and Yin Wu and He Liu and Erjia Xiao and Junchi Chen and Xiaoyu Shi and Yichi Wang and Jing Yang and Taowen Wang and Jinhao Duan and Mengshu Sun and Peiyan Dong and Xuan Shen and Yang Cao and Renjing Xu and Kaidi Xu and Jindong Gu and Bo Zhang and Jize Zhang and Chenhao Lin and Philip Torr and Chao Shen},
+  year={2026},
+  eprint={2606.02302},
+  archivePrefix={arXiv},
+  primaryClass={cs.CR},
+  url={https://arxiv.org/abs/2606.02302},
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>SeClaw: Spec-Driven Security Task Synthesis for Evaluating Autonomous Agents.</p>
+      <div>
+        <a href="https://arxiv.org/abs/2606.02302">Paper</a>
+        <a href="https://github.com/seclaw-eval/seclaw-eval">GitHub</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
